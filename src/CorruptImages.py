@@ -70,24 +70,23 @@ def corruptImagesFromDirectoryRecursively(sourceDirectoryPath='',
             corruptImagesFromDirectoryRecursively(os.path.join(sourceDirectoryPath, item),
                                                   os.path.join(destinationDirectoryPath, item))
 
-# untouchedDatasetDirectoryPath = os.path.join('D:'.join(os.sep), 'Codes', 'Python', 'Major Project', 'resrc', 'Untouched')
+untouchedDatasetDirectoryPath = pp.untouchedDatasetDirectoryPath
 # untouchedDatasetDirectoryPath = input('Please enter the root directory path: ')
-# while True:
-#     if not os.path.isdir(untouchedDatasetDirectoryPath):
-#         print(untouchedDatasetDirectoryPath)
-#         print('Directory path does not exist!\n')
-#         untouchedDatasetDirectoryPath = input('Please enter a valid directory path: ')
-#     else:
-#         break
-#
-# corruptedDatasetDirectoryPath = os.path.join('D:'.join(os.sep), 'Codes', 'Python', 'Major Project', 'resrc', 'Corrupted')
-#
+while True:
+    if not os.path.isdir(untouchedDatasetDirectoryPath):
+        print(untouchedDatasetDirectoryPath)
+        print('Directory path does not exist!\n')
+        untouchedDatasetDirectoryPath = input('Please enter a valid directory path: ')
+    else:
+        break
+
+corruptedDatasetDirectoryPath = pp.corruptedDatasetDirectoryPath
 # corruptedDatasetDirectoryPath = input('Please enter the root directory path: ')
-# if not os.path.isdir(corruptedDatasetDirectoryPath):
-#     os.mkdir(corruptedDatasetDirectoryPath)
+if not os.path.isdir(corruptedDatasetDirectoryPath):
+    os.mkdir(corruptedDatasetDirectoryPath)
 
-# corruptImagesFromDirectoryRecursively(sourceDirectoryPath=untouchedDatasetDirectoryPath,
-#                                       destinationDirectoryPath=corruptedDatasetDirectoryPath)
+corruptImagesFromDirectoryRecursively(sourceDirectoryPath=untouchedDatasetDirectoryPath,
+                                      destinationDirectoryPath=corruptedDatasetDirectoryPath)
 
-corruptImagesFromDirectoryRecursively(sourceDirectoryPath='C:\\Users\\Aditya\\Desktop\\Test',
-                                      destinationDirectoryPath='C:\\Users\\Aditya\\Desktop\\Corrupted')
+# corruptImagesFromDirectoryRecursively(sourceDirectoryPath='C:\\Users\\Aditya\\Desktop\\Test',
+#                                       destinationDirectoryPath='C:\\Users\\Aditya\\Desktop\\Corrupted')
