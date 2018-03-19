@@ -6,6 +6,7 @@ def erasedGaussian(image, erasedShape=(1, 1), sigma=(1, 1), refillColor=0):
     if erasedShape[0] == 0 or erasedShape[1] == 0:
         return image
 
+    # Taking Image Size
     imageShape = image.shape
 
     x = random.randint(0, imageShape[0])
@@ -23,12 +24,13 @@ def erasedGaussian(image, erasedShape=(1, 1), sigma=(1, 1), refillColor=0):
                 image[i - erasedShape[0], j - erasedShape[1]] = alpha * refillColor + (1 - alpha) * image[i - erasedShape[0], j - erasedShape[1]]
 
     return image
-for i in range(0, 20):
-    image = cv2.imread('C:\\Users\\Aditya\\Desktop\\TEST_IMG.png', cv2.IMREAD_GRAYSCALE)
-    cv2.imwrite('C:\\Users\\Aditya\\Desktop\\Noisy_' + str(i+1) + '.png',
-                erasedGaussian(image=image,
-                               erasedShape=(random.randint(pp.ImageNoiseParameters["ErasedEllipticalHard"]["axisXShapeLimits"][0], pp.ImageNoiseParameters["ErasedEllipticalHard"]["axisXShapeLimits"][1]),
-                                            random.randint(pp.ImageNoiseParameters["ErasedEllipticalHard"]["axisYShapeLimits"][0], pp.ImageNoiseParameters["ErasedEllipticalHard"]["axisYShapeLimits"][1])),
-                               sigma=(random.randint(pp.ImageNoiseParameters["ErasedEllipticalHard"]["axisXShapeLimits"][0], pp.ImageNoiseParameters["ErasedEllipticalHard"]["axisXShapeLimits"][1]),
-                                      random.randint(pp.ImageNoiseParameters["ErasedEllipticalHard"]["axisYShapeLimits"][0], pp.ImageNoiseParameters["ErasedEllipticalHard"]["axisYShapeLimits"][1])),
-                               refillColor=np.random.choice(a=pp.ImageNoiseParameters["ErasedEllipticalHard"]["refillColors"], size=1, p=pp.ImageNoiseParameters["ErasedEllipticalHard"]["refillColorProbabilities"])[0]))
+
+# for i in range(0, 20):
+#     image = cv2.imread('C:\\Users\\Aditya\\Desktop\\TEST_IMG.png', cv2.IMREAD_GRAYSCALE)
+#     cv2.imwrite('C:\\Users\\Aditya\\Desktop\\Noisy_' + str(i+1) + '.png',
+#                 erasedGaussian(image=image,
+#                                erasedShape=(random.randint(pp.ImageNoiseParameters["ErasedGaussian"]["shapeXLimits"][0], pp.ImageNoiseParameters["ErasedGaussian"]["shapeXLimits"][1]),
+#                                             random.randint(pp.ImageNoiseParameters["ErasedGaussian"]["shapeYLimits"][0], pp.ImageNoiseParameters["ErasedGaussian"]["shapeYLimits"][1])),
+#                                sigma=(random.randint(pp.ImageNoiseParameters["ErasedGaussian"]["sigmaXLimits"][0], pp.ImageNoiseParameters["ErasedGaussian"]["sigmaXLimits"][1]),
+#                                       random.randint(pp.ImageNoiseParameters["ErasedGaussian"]["sigmaYLimits"][0], pp.ImageNoiseParameters["ErasedGaussian"]["sigmaYLimits"][1])),
+#                                refillColor=pp.ImageNoiseParameters["ErasedGaussian"]["refillColor"]))
