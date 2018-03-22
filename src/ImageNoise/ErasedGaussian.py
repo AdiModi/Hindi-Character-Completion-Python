@@ -1,5 +1,4 @@
 import cv2, random, math, numpy as np
-from src import ProjectParameters as pp
 
 def erasedGaussian(image, erasedShape=(1, 1), sigma=(1, 1), refillColor=0):
 

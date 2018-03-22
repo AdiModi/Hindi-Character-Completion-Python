@@ -1,4 +1,4 @@
-import cv2, numpy as np, os, random, src.ProjectParameters as pp
+import cv2, numpy as np, os, random, ProjectParameters as pp
 
 inkDropFilePaths = os.listdir(pp.inkDropDirectoryPath)
 inkDropImages = []

@@ -1,5 +1,4 @@
 import cv2, numpy as np
-from src import ProjectParameters as pp
 
 def saltAndPepper(image, probability=0.1):
     if probability < 0 or probability > 1:

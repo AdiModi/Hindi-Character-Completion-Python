@@ -1,5 +1,4 @@
 import cv2, numpy as np, random
-from src import ProjectParameters as pp
 
 def erasedEllipticalHard(image, axisLength=(1, 1), refillColor=0):
 

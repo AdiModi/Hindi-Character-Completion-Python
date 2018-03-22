@@ -1,5 +1,4 @@
 import cv2, random, numpy as np
-from src import ProjectParameters as pp
 
 def localBlur(image, kSize=(11, 11), sigma=(3, 3)):
 

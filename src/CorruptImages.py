@@ -1,6 +1,8 @@
 import glob, os, cv2, tqdm, random, numpy as np
-from src.ImageNoise import ErasedGaussian, ErasedEllipticalHard, ErasedRectangleHard, InkDrop, LocalBlur, SaltAndPepper
-from src import ProjectParameters as pp
+from ImageNoise import ErasedGaussian, ErasedEllipticalHard, ErasedRectangleHard, InkDrop, LocalBlur, SaltAndPepper
+import ProjectParameters as pp
+
+# This program processes on "*.png" files only
 
 untouchedDatasetDirectoryPath = ''
 # D:\Codes\Python\Major Project\resrc\Untouched\test\0
@@ -66,7 +68,8 @@ def corruptImagesFromDirectoryRecursively(sourceDirectoryPath='',
 
     for item in os.listdir(sourceDirectoryPath):
         if os.path.isdir(os.path.join(sourceDirectoryPath, item)):
-            os.mkdir(os.path.join(destinationDirectoryPath, item))
+            if not os.path.isdir(os.path.join(destinationDirectoryPath, item)):
+                os.mkdir(os.path.join(destinationDirectoryPath, item))
             corruptImagesFromDirectoryRecursively(os.path.join(sourceDirectoryPath, item),
                                                   os.path.join(destinationDirectoryPath, item))
 
