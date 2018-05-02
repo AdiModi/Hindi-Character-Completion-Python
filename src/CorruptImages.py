@@ -14,8 +14,9 @@ def corruptImagesFromDirectoryRecursively(sourceDirectoryPath='',
     imagePaths = glob.glob(os.path.join(sourceDirectoryPath, '*.png'))
     totalImages = len(imagePaths)
 
-    print('Corrupting images from: \'' + sourceDirectoryPath + '\'\nAnd Saving it to: \'' + destinationDirectoryPath + '\'')
-    progressBar = tqdm.tqdm(total=totalImages, dynamic_ncols=False, unit=' Images', initial=0, ncols=100)
+    print('Corrupting images from:', sourceDirectoryPath, sep=' ')
+    print('And Saving it to:', destinationDirectoryPath, sep='')
+    progressBar = tqdm.tqdm(total=totalImages, dynamic_ncols=False, unit=' Images', initial=0, ncols=80)
 
     for imagePath in imagePaths:
         imageName = imagePath[imagePath.rindex(os.sep) + 1:]
@@ -23,29 +24,29 @@ def corruptImagesFromDirectoryRecursively(sourceDirectoryPath='',
         # Performing Erased Elliptical Hard
         cv2.imwrite(os.path.join(destinationDirectoryPath, 'EEH_' + imageName),
                     ErasedEllipticalHard.erasedEllipticalHard(image=image.copy(),
-                                                              axisLength=(random.randint(pp.ImageNoiseParameters["ErasedEllipticalHard"]["axisLengthXLimits"][0], pp.ImageNoiseParameters["ErasedEllipticalHard"]["axisLengthXLimits"][1]),
-                                                                          random.randint(pp.ImageNoiseParameters["ErasedEllipticalHard"]["axisLengthYLimits"][0], pp.ImageNoiseParameters["ErasedEllipticalHard"]["axisLengthYLimits"][1])),
-                                                              refillColor=np.random.choice(a=pp.ImageNoiseParameters["ErasedEllipticalHard"]["refillColors"],
+                                                              axisLength=(random.randint(pp.ImageCorruptionParameters["ErasedEllipticalHard"]["axisLengthXLimits"][0], pp.ImageCorruptionParameters["ErasedEllipticalHard"]["axisLengthXLimits"][1]),
+                                                                          random.randint(pp.ImageCorruptionParameters["ErasedEllipticalHard"]["axisLengthYLimits"][0], pp.ImageCorruptionParameters["ErasedEllipticalHard"]["axisLengthYLimits"][1])),
+                                                              refillColor=np.random.choice(a=pp.ImageCorruptionParameters["ErasedEllipticalHard"]["refillColors"],
                                                                                            size=1,
-                                                                                           p=pp.ImageNoiseParameters["ErasedEllipticalHard"]["refillColorProbabilities"])[0]))
+                                                                                           p=pp.ImageCorruptionParameters["ErasedEllipticalHard"]["refillColorProbabilities"])[0]))
 
         # Performing Erased Gaussian
         cv2.imwrite(os.path.join(destinationDirectoryPath, 'EG_' + imageName),
                     ErasedGaussian.erasedGaussian(image=image.copy(),
-                                                  erasedShape=(random.randint(pp.ImageNoiseParameters["ErasedGaussian"]["shapeXLimits"][0], pp.ImageNoiseParameters["ErasedGaussian"]["shapeXLimits"][1]),
-                                                               random.randint(pp.ImageNoiseParameters["ErasedGaussian"]["shapeYLimits"][0], pp.ImageNoiseParameters["ErasedGaussian"]["shapeYLimits"][1])),
-                                                  sigma=(random.randint(pp.ImageNoiseParameters["ErasedGaussian"]["sigmaXLimits"][0], pp.ImageNoiseParameters["ErasedGaussian"]["sigmaXLimits"][1]),
-                                                         random.randint(pp.ImageNoiseParameters["ErasedGaussian"]["sigmaYLimits"][0], pp.ImageNoiseParameters["ErasedGaussian"]["sigmaYLimits"][1])),
-                                                  refillColor=pp.ImageNoiseParameters["ErasedGaussian"]["refillColor"]))
+                                                  erasedShape=(random.randint(pp.ImageCorruptionParameters["ErasedGaussian"]["shapeXLimits"][0], pp.ImageCorruptionParameters["ErasedGaussian"]["shapeXLimits"][1]),
+                                                               random.randint(pp.ImageCorruptionParameters["ErasedGaussian"]["shapeYLimits"][0], pp.ImageCorruptionParameters["ErasedGaussian"]["shapeYLimits"][1])),
+                                                  sigma=(random.randint(pp.ImageCorruptionParameters["ErasedGaussian"]["sigmaXLimits"][0], pp.ImageCorruptionParameters["ErasedGaussian"]["sigmaXLimits"][1]),
+                                                         random.randint(pp.ImageCorruptionParameters["ErasedGaussian"]["sigmaYLimits"][0], pp.ImageCorruptionParameters["ErasedGaussian"]["sigmaYLimits"][1])),
+                                                  refillColor=pp.ImageCorruptionParameters["ErasedGaussian"]["refillColor"]))
 
         # Performing Erased Rectangle Hard
         cv2.imwrite(os.path.join(destinationDirectoryPath, 'ERH_' + imageName),
                     ErasedRectangleHard.erasedRectangleHard(image=image.copy(),
-                                                            shape=(random.randint(pp.ImageNoiseParameters["ErasedRectangleHard"]["lengthXLimits"][0], pp.ImageNoiseParameters["ErasedRectangleHard"]["lengthXLimits"][1]),
-                                                                   random.randint(pp.ImageNoiseParameters["ErasedRectangleHard"]["lengthYLimits"][0], pp.ImageNoiseParameters["ErasedRectangleHard"]["lengthYLimits"][1])),
-                                                            refillColor=np.random.choice(a=pp.ImageNoiseParameters["ErasedRectangleHard"]["refillColors"],
+                                                            shape=(random.randint(pp.ImageCorruptionParameters["ErasedRectangleHard"]["lengthXLimits"][0], pp.ImageCorruptionParameters["ErasedRectangleHard"]["lengthXLimits"][1]),
+                                                                   random.randint(pp.ImageCorruptionParameters["ErasedRectangleHard"]["lengthYLimits"][0], pp.ImageCorruptionParameters["ErasedRectangleHard"]["lengthYLimits"][1])),
+                                                            refillColor=np.random.choice(a=pp.ImageCorruptionParameters["ErasedRectangleHard"]["refillColors"],
                                                                                          size=1,
-                                                                                         p=pp.ImageNoiseParameters["ErasedRectangleHard"]["refillColorProbabilities"])[0]))
+                                                                                         p=pp.ImageCorruptionParameters["ErasedRectangleHard"]["refillColorProbabilities"])[0]))
 
         # Performing Ink Drop
         cv2.imwrite(os.path.join(destinationDirectoryPath, 'ID_' + imageName),
@@ -54,13 +55,13 @@ def corruptImagesFromDirectoryRecursively(sourceDirectoryPath='',
         # Performing Local Blur
         cv2.imwrite(os.path.join(destinationDirectoryPath, 'LB_' + imageName),
                     LocalBlur.localBlur(image=image.copy(),
-                                        kSize=pp.ImageNoiseParameters["LocalBlur"]["kSize"],
-                                        sigma=pp.ImageNoiseParameters["LocalBlur"]["sigma"]))
+                                        kSize=pp.ImageCorruptionParameters["LocalBlur"]["kSize"],
+                                        sigma=pp.ImageCorruptionParameters["LocalBlur"]["sigma"]))
 
         # Performing Salt And Pepper
         cv2.imwrite(os.path.join(destinationDirectoryPath, 'S&P_' + imageName),
                     SaltAndPepper.saltAndPepper(image=image,
-                                                probability=pp.ImageNoiseParameters["SaltAndPepper"]["probability"]))
+                                                probability=pp.ImageCorruptionParameters["SaltAndPepper"]["probability"]))
 
         progressBar.update(1)
 

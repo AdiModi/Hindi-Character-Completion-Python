@@ -11,33 +11,33 @@ corruptedDatasetDirectoryPath = os.path.join(generatedDirectoryPath, 'Corrupted'
 inkDropDirectoryPath = os.path.join(resrcDirectoryPath, "Ink Drops")
 untouchedDatasetDirectoryPath = os.path.join(resrcDirectoryPath, 'Untouched')
 
-ImageNoiseParameters = dict()
+ImageCorruptionParameters = dict()
 
-ImageNoiseParameters["ErasedEllipticalHard"] = dict()
-ImageNoiseParameters["ErasedEllipticalHard"]["axisLengthXLimits"] = (5, 10)
-ImageNoiseParameters["ErasedEllipticalHard"]["axisLengthYLimits"] = (5, 10)
-ImageNoiseParameters["ErasedEllipticalHard"]["refillColors"] = (0, 255)
-ImageNoiseParameters["ErasedEllipticalHard"]["refillColorProbabilities"] = (0.75, 0.25)
+ImageCorruptionParameters["ErasedEllipticalHard"] = dict()
+ImageCorruptionParameters["ErasedEllipticalHard"]["axisLengthXLimits"] = (5, 10)
+ImageCorruptionParameters["ErasedEllipticalHard"]["axisLengthYLimits"] = (5, 10)
+ImageCorruptionParameters["ErasedEllipticalHard"]["refillColors"] = (0, 255)
+ImageCorruptionParameters["ErasedEllipticalHard"]["refillColorProbabilities"] = (0.75, 0.25)
 
-ImageNoiseParameters["ErasedRectangleHard"] = dict()
-ImageNoiseParameters["ErasedRectangleHard"]["lengthXLimits"] = (10, 25)
-ImageNoiseParameters["ErasedRectangleHard"]["lengthYLimits"] = (10, 25)
-ImageNoiseParameters["ErasedRectangleHard"]["refillColors"] = (0, 255)
-ImageNoiseParameters["ErasedRectangleHard"]["refillColorProbabilities"] = (0.75, 0.25)
+ImageCorruptionParameters["ErasedRectangleHard"] = dict()
+ImageCorruptionParameters["ErasedRectangleHard"]["lengthXLimits"] = (10, 25)
+ImageCorruptionParameters["ErasedRectangleHard"]["lengthYLimits"] = (10, 25)
+ImageCorruptionParameters["ErasedRectangleHard"]["refillColors"] = (0, 255)
+ImageCorruptionParameters["ErasedRectangleHard"]["refillColorProbabilities"] = (0.75, 0.25)
 
-ImageNoiseParameters["InkDrop"] = dict()
-ImageNoiseParameters["InkDrop"]["filterSize"] = (32, 32)
+ImageCorruptionParameters["InkDrop"] = dict()
+ImageCorruptionParameters["InkDrop"]["filterSize"] = (32, 32)
 
-ImageNoiseParameters["SaltAndPepper"] = dict()
-ImageNoiseParameters["SaltAndPepper"]["probability"] = 0.1
+ImageCorruptionParameters["SaltAndPepper"] = dict()
+ImageCorruptionParameters["SaltAndPepper"]["probability"] = 0.1
 
-ImageNoiseParameters["LocalBlur"] = dict()
-ImageNoiseParameters["LocalBlur"]["kSize"] = (11, 11)
-ImageNoiseParameters["LocalBlur"]["sigma"] = (2, 2)
+ImageCorruptionParameters["LocalBlur"] = dict()
+ImageCorruptionParameters["LocalBlur"]["kSize"] = (11, 11)
+ImageCorruptionParameters["LocalBlur"]["sigma"] = (2, 2)
 
-ImageNoiseParameters["ErasedGaussian"] = dict()
-ImageNoiseParameters["ErasedGaussian"]["shapeXLimits"] = (25, 30)
-ImageNoiseParameters["ErasedGaussian"]["shapeYLimits"] = (25, 30)
-ImageNoiseParameters["ErasedGaussian"]["sigmaXLimits"] = (7, 7)
-ImageNoiseParameters["ErasedGaussian"]["sigmaYLimits"] = (7, 7)
-ImageNoiseParameters["ErasedGaussian"]["refillColor"] = 0
+ImageCorruptionParameters["ErasedGaussian"] = dict()
+ImageCorruptionParameters["ErasedGaussian"]["shapeXLimits"] = (25, 30)
+ImageCorruptionParameters["ErasedGaussian"]["shapeYLimits"] = (25, 30)
+ImageCorruptionParameters["ErasedGaussian"]["sigmaXLimits"] = (7, 7)
+ImageCorruptionParameters["ErasedGaussian"]["sigmaYLimits"] = (7, 7)
+ImageCorruptionParameters["ErasedGaussian"]["refillColor"] = 0
