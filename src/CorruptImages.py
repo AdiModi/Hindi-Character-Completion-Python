@@ -1,6 +1,9 @@
-import glob, os, cv2, tqdm, random, numpy as np
 from ImageNoise import ErasedGaussian, ErasedEllipticalHard, ErasedRectangleHard, InkDrop, LocalBlur, SaltAndPepper
+import glob, os, cv2, tqdm, random, numpy as np
 import ProjectParameters as pp
+import time
+
+start_time = time.time()
 
 # This program processes on "*.png" files only
 
@@ -91,6 +94,8 @@ if not os.path.isdir(corruptedDatasetDirectoryPath):
 
 corruptImagesFromDirectoryRecursively(sourceDirectoryPath=untouchedDatasetDirectoryPath,
                                       destinationDirectoryPath=corruptedDatasetDirectoryPath)
+
+print("Complete Execution Time to Corrupt and Save Images is %s seconds " %(time.time() - start_time))
 
 # corruptImagesFromDirectoryRecursively(sourceDirectoryPath='C:\\Users\\Aditya\\Desktop\\Test',
 #                                       destinationDirectoryPath='C:\\Users\\Aditya\\Desktop\\Corrupted')

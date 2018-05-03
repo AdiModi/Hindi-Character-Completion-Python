@@ -1,5 +1,7 @@
 import os, numpy as np
 
+imageDimension = 32
+
 projectPath = os.path.join("D:".join(os.sep), "Codes", "Python", "Hindi Character Completion")
 
 generatedDirectoryPath = os.path.join(projectPath, "generated")
@@ -7,6 +9,8 @@ resrcDirectoryPath = os.path.join(projectPath, "resrc")
 srcDirectoryPath = os.path.join(projectPath, "src")
 
 corruptedDatasetDirectoryPath = os.path.join(generatedDirectoryPath, 'Corrupted')
+serialImagesDatasetFilePath = os.path.join(generatedDirectoryPath, 'Serial Images Dataset.mat')
+nonSerialImagesDatasetFilePath = os.path.join(generatedDirectoryPath, 'Non Serial Images Dataset.mat')
 
 inkDropDirectoryPath = os.path.join(resrcDirectoryPath, "Ink Drops")
 untouchedDatasetDirectoryPath = os.path.join(resrcDirectoryPath, 'Untouched')
